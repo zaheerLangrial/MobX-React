@@ -1,31 +1,36 @@
-import { action, computed, makeObservable, observable } from "mobx";
+import { makeObservable, observable } from "mobx";
 import { IRootStore } from "./rootStore";
 
 export class countStore {
     count : number = 0;
-    rootStore : IRootStore; 
+    rootStore : IRootStore
+
+
 
 
     constructor (rootStore : IRootStore) {
-        makeObservable(this , {
+        makeObservable (this , {
             count : observable,
-            increment : action,
-            decrement : action,
-            getCountValue : computed
-        });
-        this.rootStore = rootStore;
-    }
+        })
+        this.rootStore = rootStore
+    } 
+
 
     increment = () => {
-        this.count++
+        this.count ++;
     }
 
     decrement = () => {
-        this.count--
+        if (this.count > 0) {
+            this.count --
+        }
     }
 
+    reset = () => {
+        this.count = 0
+    }
 
     get getCountValue () {
-        return this.count
+        return this.count;
     }
 }

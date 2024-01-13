@@ -1,11 +1,11 @@
 import './App.css'
-import {Count} from './components/count'
+import Count from './components/Count'
 
 function App() {
 
   return (
     <>
-    <h1>Hello</h1>
+      <h1>Count</h1>
       <Count />
     </>
   )

@@ -4,11 +4,45 @@ export interface IRootStore {
     countStore : countStore;
 }
 
+
 export class RootStore implements IRootStore {
-    countStore: countStore;
+    countStore: countStore; 
 
 
     constructor () {
-        this.countStore = new countStore(this);
+        this.countStore = new countStore(this)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { countStore } from "./CountStore";
+
+    // export interface IRootStore {
+    //     countStore : countStore
+    // }
+
+    // export class RootStore implements IRootStore {
+    //     countStore : countStore;
+
+
+    //     constructor () {
+    //         this.countStore = new countStore(this)
+    //     }
+
+    // }
+
+
+
