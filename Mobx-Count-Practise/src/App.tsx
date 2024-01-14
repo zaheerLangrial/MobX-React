@@ -1,5 +1,6 @@
 import './App.css'
 import Count from './components/Count'
+import GithubUserDetail from './components/GithubUserDetail'
 
 function App() {
 
@@ -7,6 +8,8 @@ function App() {
     <>
       <h1>Count</h1>
       <Count />
+      <hr />
+      <GithubUserDetail />
     </>
   )
 }
