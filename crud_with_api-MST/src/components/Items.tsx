@@ -3,7 +3,7 @@ import  useRootStore  from '../hooks/useRootStore';
 import { useEffect } from 'react';
 
 const ItemComponent = observer(() => {
-    const {itemStore} = useRootStore()
+    const {itemStore } = useRootStore()
 
   useEffect(() => {
     itemStore.fetchItems();
