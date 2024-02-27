@@ -1,24 +1,31 @@
-import {types , flow } from 'mobx-state-tree';
-import ItemModel from '../../models/ItemModel'
-import axios from 'axios';
+import { types, flow } from 'mobx-state-tree';
 
-
-const ItemStore = types.model('items' , {
-    id : types.string,
+const User = types.model('User' , {
+    id : types.identifier,
     name : types.string,
-    description : types.string
+    email : types.string
 })
-.actions ((self) => ({
-    fetchItems : flow(function* fetchItems() {
-        const res = yield axios.get('https://fakestoreapi.com/products')
-        // const data = res.data
-        // self.items = data.map((item) => ({
-        //     id : item.id.toString(),
-        //     name : item.title,
-        //     description : item.description
-        // }))
+
+const UserModel = types
+  .model({
+    users: types.array(User),
+  })
+  .actions((self) => ({
+    fetchUsers: flow(function* fetchUsers() {
+      try {
+        const response = yield fetch('https://jsonplaceholder.typicode.com/users');
+        const todos = yield response.json();
+        self.users = todos.map((user) => ({
+            id : user.id.toString(),
+            name : user.username,
+            email : user.email
+        }))
+      } catch (error) {
+        console.error('Error fetching todos:', error);
+      }
     }),
-}))
+  }));
 
+const UserStore = UserModel.create();
 
-export default ItemStore;
+export default UserStore;
